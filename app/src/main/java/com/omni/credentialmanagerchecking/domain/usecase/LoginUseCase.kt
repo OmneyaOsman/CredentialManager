@@ -2,8 +2,14 @@ package com.omni.credentialmanagerchecking.domain.usecase
 
 import com.omni.credentialmanagerchecking.domain.model.SignInResult
 import com.omni.credentialmanagerchecking.domain.repo.AuthRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class LoginUseCase(private val repository: AuthRepository) {
-    suspend operator fun invoke(username: String, password: String): SignInResult =
-        repository.loginUser(username, password)
+class LoginUseCase @Inject constructor(private val repository: AuthRepository) {
+    suspend operator fun invoke(): Flow<SignInResult> =
+        flow {
+            emit(repository.loginUser())
+        }
+
 }

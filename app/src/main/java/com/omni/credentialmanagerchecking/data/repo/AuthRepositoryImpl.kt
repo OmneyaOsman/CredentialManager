@@ -14,7 +14,7 @@ class AuthRepositoryImpl @Inject constructor(
     private val accountCredentialManager: AccountCredentialManager,
     private val dataProvider: DataProvider
 ) : AuthRepository {
-    override suspend fun loginUser(username: String, password: String): SignInResult {
+    override suspend fun loginUser(): SignInResult {
         dataProvider.setSignedIn(true)
       return  accountCredentialManager.signInWithPassword()
     }
@@ -28,4 +28,13 @@ class AuthRepositoryImpl @Inject constructor(
     }
 
     override fun isLoggedInUser(): Flow<Boolean> =  dataProvider.isSignedIn
+
+    override suspend fun logoutUser(){
+        dataProvider.setSignedIn(false)
+    }
+
+
+    override fun configureGetCredentialRequest() {
+        accountCredentialManager.configureGetCredentialRequest()
+    }
 }
