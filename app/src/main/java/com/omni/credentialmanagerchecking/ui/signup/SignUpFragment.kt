@@ -50,7 +50,11 @@ class SignUpFragment : Fragment() {
                     binding.errorMessage.text = state.errorMessage
                     binding.username.setText(state.username)
                     binding.password.setText(state.errorMessage)
-                    if (state.isRegister) findNavController().navigate(R.id.action_SecondFragment_to_homeFragment)
+                    if (state.isRegister) {
+                        findNavController().navigate(R.id.action_SecondFragment_to_homeFragment,Bundle().apply {
+                            putString("username", state.loggedInUser)
+                        })
+                    }
                 }
             }
         }

@@ -22,10 +22,6 @@ class LoginViewModel @Inject constructor(
 
     var signInState = MutableStateFlow(LoginState())
 
-//    init {
-//        authRepository.configureGetCredentialRequest()
-//    }
-
 
     fun signInWithPassword() {
         viewModelScope.launch {
