@@ -26,6 +26,8 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        val username = arguments?.getString("username")
+        binding.textView.text = "Hello $username"
         return binding.root
 
     }

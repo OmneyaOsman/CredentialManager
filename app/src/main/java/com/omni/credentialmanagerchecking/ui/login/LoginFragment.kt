@@ -48,7 +48,11 @@ class LoginFragment : Fragment() {
                 loginViewModel.signInState.collect { state ->
                     viewsVisibility(state.inProgress)
                     binding.errorMessage.text = state.errorMessage
-                    if (state.isRegister) findNavController().navigate(R.id.action_FirstFragment_to_homeFragment)
+                    if (state.isRegister) {
+                        findNavController().navigate(R.id.action_FirstFragment_to_homeFragment , Bundle().apply {
+                            putString("username", state.loggedInUser)
+                        })
+                    }
                 }
             }
         }
