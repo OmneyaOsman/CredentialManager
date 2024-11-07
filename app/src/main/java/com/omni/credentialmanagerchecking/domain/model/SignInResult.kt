@@ -1,4 +1,4 @@
-package com.omni.credentialmanagerchecking.domain
+package com.omni.credentialmanagerchecking.domain.model
 
 sealed interface SignInResult {
     data class Success(val username: String): SignInResult

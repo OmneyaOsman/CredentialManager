@@ -1,7 +1,7 @@
 package com.omni.credentialmanagerchecking.domain.repo
 
-import com.omni.credentialmanagerchecking.domain.SignInResult
-import com.omni.credentialmanagerchecking.domain.SignUpResult
+import com.omni.credentialmanagerchecking.domain.model.SignInResult
+import com.omni.credentialmanagerchecking.domain.model.SignUpResult
 import kotlinx.coroutines.flow.Flow
 
 interface AuthRepository {

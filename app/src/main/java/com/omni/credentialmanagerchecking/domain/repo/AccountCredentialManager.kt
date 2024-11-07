@@ -1,10 +1,7 @@
-package com.omni.credentialmanagerchecking.domain
+package com.omni.credentialmanagerchecking.domain.repo
 
-import android.app.Activity
 import android.content.Context
-import android.util.Log
 import androidx.credentials.CreatePasswordRequest
-import androidx.credentials.CreatePasswordResponse
 import androidx.credentials.CredentialManager
 import androidx.credentials.GetCredentialRequest
 import androidx.credentials.GetPasswordOption
@@ -14,6 +11,8 @@ import androidx.credentials.exceptions.CreateCredentialException
 import androidx.credentials.exceptions.GetCredentialCancellationException
 import androidx.credentials.exceptions.GetCredentialException
 import androidx.credentials.exceptions.NoCredentialException
+import com.omni.credentialmanagerchecking.domain.model.SignInResult
+import com.omni.credentialmanagerchecking.domain.model.SignUpResult
 import dagger.hilt.android.qualifiers.ActivityContext
 import javax.inject.Inject
 
@@ -38,7 +37,7 @@ class AccountCredentialManager @Inject constructor(
         }
     }
 
-    suspend fun signIn(): SignInResult {
+    suspend fun signInWithPassword(): SignInResult {
         return try {
             val credentialResponse = credentialManager.getCredential(
                 context = activity,

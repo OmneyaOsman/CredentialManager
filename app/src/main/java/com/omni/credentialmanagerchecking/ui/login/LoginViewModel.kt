@@ -2,7 +2,6 @@ package com.omni.credentialmanagerchecking.ui.login
 
 import androidx.lifecycle.ViewModel
 import com.omni.credentialmanagerchecking.domain.usecase.LoginUseCase
-import com.omni.credentialmanagerchecking.domain.usecase.SignUpUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

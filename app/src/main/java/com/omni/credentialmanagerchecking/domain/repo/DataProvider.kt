@@ -1,6 +1,5 @@
-package com.omni.credentialmanagerchecking.domain
+package com.omni.credentialmanagerchecking.domain.repo
 
-import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.core.IOException
 import androidx.datastore.preferences.core.Preferences

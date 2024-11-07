@@ -47,8 +47,6 @@ class LoginFragment : Fragment() {
                         binding.password.text.toString()
                     )
 
-//                    createPassword()
-
 //                    simulateServerDelayAndLogIn()
 
                 }

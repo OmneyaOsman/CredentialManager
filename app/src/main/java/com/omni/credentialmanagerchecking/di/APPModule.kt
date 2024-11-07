@@ -7,15 +7,14 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStoreFile
 import com.omni.credentialmanagerchecking.data.remote.LoginApi
 import com.omni.credentialmanagerchecking.data.repo.AuthRepositoryImpl
-import com.omni.credentialmanagerchecking.domain.AccountCredentialManager
-import com.omni.credentialmanagerchecking.domain.DataProvider
+import com.omni.credentialmanagerchecking.domain.repo.AccountCredentialManager
+import com.omni.credentialmanagerchecking.domain.repo.DataProvider
 import com.omni.credentialmanagerchecking.domain.repo.AuthRepository
 import com.omni.credentialmanagerchecking.domain.usecase.LoginUseCase
 import com.omni.credentialmanagerchecking.domain.usecase.SignUpUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ActivityContext
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton

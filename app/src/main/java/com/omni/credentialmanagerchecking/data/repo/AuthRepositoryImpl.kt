@@ -1,11 +1,10 @@
 package com.omni.credentialmanagerchecking.data.repo
 
-import com.omni.credentialmanagerchecking.data.model.LoginRequest
 import com.omni.credentialmanagerchecking.data.remote.LoginApi
-import com.omni.credentialmanagerchecking.domain.AccountCredentialManager
-import com.omni.credentialmanagerchecking.domain.DataProvider
-import com.omni.credentialmanagerchecking.domain.SignInResult
-import com.omni.credentialmanagerchecking.domain.SignUpResult
+import com.omni.credentialmanagerchecking.domain.repo.AccountCredentialManager
+import com.omni.credentialmanagerchecking.domain.repo.DataProvider
+import com.omni.credentialmanagerchecking.domain.model.SignInResult
+import com.omni.credentialmanagerchecking.domain.model.SignUpResult
 import com.omni.credentialmanagerchecking.domain.repo.AuthRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -17,7 +16,7 @@ class AuthRepositoryImpl @Inject constructor(
 ) : AuthRepository {
     override suspend fun loginUser(username: String, password: String): SignInResult {
         dataProvider.setSignedIn(true)
-      return  accountCredentialManager.signIn()
+      return  accountCredentialManager.signInWithPassword()
     }
 
 
