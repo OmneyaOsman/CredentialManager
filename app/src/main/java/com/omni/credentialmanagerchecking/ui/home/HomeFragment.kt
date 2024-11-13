@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.omni.credentialmanagerchecking.R
 import com.omni.credentialmanagerchecking.databinding.FragmentHomeBinding
-import com.omni.credentialmanagerchecking.ui.login.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

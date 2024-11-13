@@ -15,7 +15,6 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val useCase: LoginUseCase,
-    private val authRepository: AuthRepository
 ) : ViewModel() {
 
     var signInState = MutableStateFlow(LoginState())
@@ -53,15 +52,7 @@ class LoginViewModel @Inject constructor(
                     }
                 }
 
-
             }
         }
     }
-
-    fun logoutUser() {
-        viewModelScope.launch {
-            authRepository.logoutUser()
-        }
-    }
-
 }
