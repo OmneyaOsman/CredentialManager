@@ -11,6 +11,7 @@ import com.omni.credentialmanagerchecking.domain.repo.AccountCredentialManager
 import com.omni.credentialmanagerchecking.domain.repo.DataProvider
 import com.omni.credentialmanagerchecking.domain.repo.AuthRepository
 import com.omni.credentialmanagerchecking.domain.usecase.LoginUseCase
+import com.omni.credentialmanagerchecking.domain.usecase.LogoutUseCase
 import com.omni.credentialmanagerchecking.domain.usecase.SignUpUseCase
 import dagger.Module
 import dagger.Provides
@@ -36,6 +37,9 @@ object APPModule {
 
     @Provides
     fun provideLoginUseCase(repository: AuthRepository): LoginUseCase = LoginUseCase(repository)
+
+    @Provides
+    fun provideLogoutUseCase(repository: AuthRepository): LogoutUseCase = LogoutUseCase(repository)
 
     @Provides
     fun provideSignUpUseCase(repository: AuthRepository): SignUpUseCase = SignUpUseCase(repository)

@@ -6,10 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class LoginUseCase @Inject constructor(private val repository: AuthRepository) {
-    operator fun invoke(): Flow<SignInResult> =
-        flow {
-            emit(repository.loginUser())
-        }
+class LogoutUseCase @Inject constructor(private val repository: AuthRepository) {
+    suspend operator fun invoke() = repository.logoutUser()
 
 }
