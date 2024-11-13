@@ -46,4 +46,7 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="home">Home</string>
+    <string name="sign_in_in_to_your_account_with_a_password_your_password_will_be_saved_securely_with_your_password_provider">Sign in in to your account with a password. Your password will be saved securely with your password provider.</string>
+    <string name="autofill_saved_credentials">Autofill saved credentials</string>
+
 </resources>

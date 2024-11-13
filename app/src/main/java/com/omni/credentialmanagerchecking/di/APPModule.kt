@@ -6,11 +6,10 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStoreFile
 import com.omni.credentialmanagerchecking.data.remote.LoginApi
-import com.omni.credentialmanagerchecking.data.repo.AuthRepositoryImpl
 import com.omni.credentialmanagerchecking.domain.repo.AccountCredentialManager
 import com.omni.credentialmanagerchecking.domain.repo.DataProvider
-import com.omni.credentialmanagerchecking.domain.repo.AuthRepository
 import com.omni.credentialmanagerchecking.domain.usecase.LoginUseCase
+import com.omni.credentialmanagerchecking.domain.usecase.LoginWithSavedCredentialsUseCase
 import com.omni.credentialmanagerchecking.domain.usecase.LogoutUseCase
 import com.omni.credentialmanagerchecking.domain.usecase.SignUpUseCase
 import dagger.Module
@@ -25,24 +24,28 @@ import javax.inject.Singleton
 object APPModule {
 
     @Provides
-    fun provideLoginRepository(
+    fun provideAccountCredentialManager(
+        @ApplicationContext context: Context,
         api: LoginApi,
-        accountCredentialManager: AccountCredentialManager,
         dataProvider: DataProvider
-    ): AuthRepository = AuthRepositoryImpl(api, accountCredentialManager, dataProvider)
+    ): AccountCredentialManager =
+        AccountCredentialManager(context, api, dataProvider)
 
     @Provides
-    fun provideAccountCredentialManager(@ApplicationContext context: Context): AccountCredentialManager =
-        AccountCredentialManager(context)
+    fun provideLoginUseCase(accountCredentialManager: AccountCredentialManager): LoginUseCase =
+        LoginUseCase(accountCredentialManager)
 
     @Provides
-    fun provideLoginUseCase(repository: AuthRepository): LoginUseCase = LoginUseCase(repository)
+    fun provideLoginWithSavedCredentialsUseCase(accountCredentialManager: AccountCredentialManager): LoginWithSavedCredentialsUseCase =
+        LoginWithSavedCredentialsUseCase(accountCredentialManager)
 
     @Provides
-    fun provideLogoutUseCase(repository: AuthRepository): LogoutUseCase = LogoutUseCase(repository)
+    fun provideLogoutUseCase(accountCredentialManager: AccountCredentialManager): LogoutUseCase =
+        LogoutUseCase(accountCredentialManager)
 
     @Provides
-    fun provideSignUpUseCase(repository: AuthRepository): SignUpUseCase = SignUpUseCase(repository)
+    fun provideSignUpUseCase(accountCredentialManager: AccountCredentialManager): SignUpUseCase =
+        SignUpUseCase(accountCredentialManager)
 
     @Provides
     @Singleton
