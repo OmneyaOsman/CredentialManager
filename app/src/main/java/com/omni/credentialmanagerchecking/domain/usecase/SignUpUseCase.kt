@@ -3,7 +3,6 @@ package com.omni.credentialmanagerchecking.domain.usecase
 import com.omni.credentialmanagerchecking.domain.model.SignUpResult
 import com.omni.credentialmanagerchecking.domain.repo.AccountCredentialManager
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
