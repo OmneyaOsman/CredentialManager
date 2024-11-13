@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 interface AuthRepository {
     suspend fun loginUser(): SignInResult
     suspend fun signUpUser(username: String, password: String): SignUpResult
-    fun isLoggedInUser(): Flow<Boolean>
     suspend fun logoutUser()
-    fun configureGetCredentialRequest()
+    fun isLoggedInUser(): Flow<Boolean>
+//    fun configureGetCredentialRequest()
 }

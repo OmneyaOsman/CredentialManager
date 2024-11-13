@@ -13,9 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.omni.credentialmanagerchecking.R
 import com.omni.credentialmanagerchecking.databinding.FragmentSecondBinding
-import com.omni.credentialmanagerchecking.domain.model.SignUpResult
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint

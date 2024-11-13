@@ -1,5 +1,6 @@
 package com.omni.credentialmanagerchecking.domain.repo
 
+import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.core.IOException
 import androidx.datastore.preferences.core.Preferences
@@ -20,6 +21,7 @@ class DataProvider @Inject constructor(private val dataStore: DataStore<Preferen
 
     // Set if the user is signed in or not
     suspend fun setSignedIn(flag: Boolean) {
+        Log.d(TAG, "-------------- setSignedIn to $flag ------------ ")
         dataStore.edit { preferences ->
             preferences[PreferencesKeys.IS_SIGNED_IN] = flag
         }
@@ -58,3 +60,5 @@ class DataProvider @Inject constructor(private val dataStore: DataStore<Preferen
             preferences[PreferencesKeys.IS_SIGNED_IN_THROUGH_PASSKEYS] ?: false
         }
 }
+
+const val TAG ="CredentialManager"

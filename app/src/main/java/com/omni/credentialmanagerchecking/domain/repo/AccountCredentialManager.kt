@@ -5,7 +5,6 @@ import androidx.credentials.CreatePasswordRequest
 import androidx.credentials.CredentialManager
 import androidx.credentials.GetCredentialRequest
 import androidx.credentials.GetPasswordOption
-import androidx.credentials.GetPublicKeyCredentialOption
 import androidx.credentials.PasswordCredential
 import androidx.credentials.exceptions.CreateCredentialCancellationException
 import androidx.credentials.exceptions.CreateCredentialException
@@ -23,15 +22,11 @@ class AccountCredentialManager @Inject constructor(
     private val credentialManager = CredentialManager.create(activity)
 
 
-     fun configureGetCredentialRequest(): GetCredentialRequest {
-        val getPasswordOption = GetPasswordOption()
-        val getCredentialRequest = GetCredentialRequest(
-            listOf(
-                getPasswordOption
-            )
-        )
-        return getCredentialRequest
-    }
+//     fun configureGetCredentialRequest(): GetCredentialRequest {
+//        val getPasswordOption = GetPasswordOption()
+//        val getCredentialRequest = GetCredentialRequest(listOf(getPasswordOption))
+//        return getCredentialRequest
+//    }
 
     suspend fun signUpWithPassword(username: String, password: String): SignUpResult {
         return try {
@@ -53,17 +48,13 @@ class AccountCredentialManager @Inject constructor(
         return try {
             val credentialResponse = credentialManager.getCredential(
                 context = activity,
-                request = GetCredentialRequest(
-                    credentialOptions = listOf(GetPasswordOption())
-                )
+                request = GetCredentialRequest(credentialOptions = listOf(GetPasswordOption()))
             )
 
             val credential = credentialResponse.credential as? PasswordCredential
                 ?: return SignInResult.Failure
 
-            // Make login API call here with credential.id and credential.password
-
-            SignInResult.Success(credential.id)
+            SignInResult.Success(credential.id , credential.password)
         } catch (e: GetCredentialCancellationException) {
             e.printStackTrace()
             SignInResult.Cancelled
