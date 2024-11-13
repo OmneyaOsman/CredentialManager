@@ -1,14 +1,11 @@
 package com.omni.credentialmanagerchecking.domain.repo
 
 import android.content.Context
-import android.util.Log
 import androidx.credentials.CreatePasswordRequest
 import androidx.credentials.CredentialManager
 import androidx.credentials.GetCredentialRequest
 import androidx.credentials.GetPasswordOption
 import androidx.credentials.PasswordCredential
-import androidx.credentials.PendingGetCredentialRequest
-import androidx.credentials.PublicKeyCredential
 import androidx.credentials.exceptions.CreateCredentialCancellationException
 import androidx.credentials.exceptions.CreateCredentialException
 import androidx.credentials.exceptions.GetCredentialCancellationException
