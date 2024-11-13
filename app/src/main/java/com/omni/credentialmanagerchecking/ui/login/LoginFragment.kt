@@ -1,7 +1,6 @@
 package com.omni.credentialmanagerchecking.ui.login
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +8,8 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.credentials.GetCredentialRequest
 import androidx.credentials.GetPasswordOption
-import androidx.credentials.GetPublicKeyCredentialOption
 import androidx.credentials.PasswordCredential
 import androidx.credentials.PendingGetCredentialRequest
-import androidx.credentials.PublicKeyCredential
 import androidx.credentials.pendingGetCredentialRequest
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -21,7 +18,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.omni.credentialmanagerchecking.R
 import com.omni.credentialmanagerchecking.databinding.FragmentFirstBinding
-import com.omni.credentialmanagerchecking.domain.repo.TAG
 import com.omni.credentialmanagerchecking.ui.signup.LoginState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
