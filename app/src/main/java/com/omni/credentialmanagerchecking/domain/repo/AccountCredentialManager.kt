@@ -30,11 +30,15 @@ class AccountCredentialManager @Inject constructor(
 
     suspend fun signUpWithPassword(username: String, password: String): SignUpResult {
         return try {
-            credentialManager.createCredential(
-                context = activity,
-                request = CreatePasswordRequest(id = username, password = password)
-            )
-            handleSignUp(username, password)
+            val response = LoginResponse(true, "")
+            return if (response.success) {
+                credentialManager.createCredential(
+                    context = activity,
+                    request = CreatePasswordRequest(id = username, password = password)
+                )
+                dataProvider.setSignedIn(true)
+                SignUpResult.Success(username)
+            } else SignUpResult.Failure
         } catch (e: CreateCredentialCancellationException) {
             e.printStackTrace()
             SignUpResult.Cancelled
@@ -43,16 +47,6 @@ class AccountCredentialManager @Inject constructor(
             SignUpResult.Failure
         }
     }
-
-    private suspend fun handleSignUp(username: String, password: String): SignUpResult {
-        val response = LoginResponse(true, "")
-//                loginApi.signup(LoginRequest(result.username, result.password))
-        return if (response.success) {
-            dataProvider.setSignedIn(true)
-            SignUpResult.Success(username)
-        } else SignUpResult.Failure
-    }
-
 
     suspend fun signInWithPassword(): SignInResult {
         return try {
