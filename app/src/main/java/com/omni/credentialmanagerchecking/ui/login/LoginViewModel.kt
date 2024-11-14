@@ -24,7 +24,7 @@ class LoginViewModel @Inject constructor(
 
     fun signInWithPassword() {
         viewModelScope.launch {
-            signInState.update { it.copy(inProgress = true) }
+            signInState.update { it.copy(inProgress = true , errorMessage = "") }
             val result = loginWithSavedCredentialsUseCase.invoke()
             handleLoginResult(result)
         }
@@ -64,7 +64,7 @@ class LoginViewModel @Inject constructor(
 
     fun login(userName: String, password: String) {
         viewModelScope.launch {
-            signInState.update { it.copy(inProgress = true) }
+            signInState.update { it.copy(inProgress = true, errorMessage = "") }
             val result = loginUseCase.invoke(userName, password)
             handleLoginResult(result)
         }

@@ -23,7 +23,7 @@ class SignupViewModel @Inject constructor(private val useCase: SignUpUseCase) : 
         viewModelScope.launch {
             useCase.invoke(userName, password).onStart {
                 _signUpState.update {
-                    it.copy(inProgress = true)
+                    it.copy(inProgress = true, errorMessage = "")
                 }
             }.collect { state ->
                 when (state) {
